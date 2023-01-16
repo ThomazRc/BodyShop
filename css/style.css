@@ -1,0 +1,52 @@
+
+h1{
+    font-size: 28px;
+}
+h2{
+    font-size: 24px;
+}
+h3{
+    font-size: 20px;
+}
+h4{
+    font-size: 16px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+
+}
+
+.navegacao{
+    display: flex;
+    width: 350px;
+    justify-content: space-around;
+    
+}
+
+hr{
+    opacity: 0.3;
+
+}
+
+main{
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+ul{
+    width: 720px;
+}
+
+li{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+}
+
+
