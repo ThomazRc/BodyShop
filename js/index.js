@@ -8,12 +8,15 @@ main.appendChild(vitriSec);
 
 let ul = document.createElement('ul');
 main.appendChild(ul);
+let quantidade = 0;
+let somaPreco = 0;
 
-function Cards(){
+function Cards(data){
     
     for(let i = 0; i < data.length; i++){
         let dataCards = data[i];
         
+
         let li = document.createElement('li');
         ul.appendChild(li);
 
@@ -37,6 +40,7 @@ function Cards(){
 
         let addCar = document.createElement('button');
         addCar.setAttribute('class', 'adcProduto');
+        addCar.setAttribute('id', dataCards.id);
         addCar.innerText = dataCards.addCart;
 
         
@@ -49,11 +53,81 @@ function Cards(){
         li.appendChild(addCar);
 
 
+        addCar.addEventListener('click', function(e){
+
+            quantidade++
+            somaPreco += dataCards.value;
+
+            if(quantidade > 0){
+                
+                infoItemCarr.style = 'display: none';
+
+            }else if(quantidade == 0){
+                infoItemCarr.style = 'display: flex';
+            }
+
+
+            let cards = criarItemCarr(dataCards);
+            let lista = document.querySelector('.ulItem');
+            lista.appendChild(cards);
+
+           
+
+            qntTot.innerText = quantidade;
+            spanRes.innerText = 'R$ ' + somaPreco + '.00';
+            
+        });
+
+
     }
-    
+
 }
 
-Cards();
+Cards(data);
+
+ function criarItemCarr(dataCards){
+    let liCarr = document.createElement('li');
+    liCarr.setAttribute('class', 'liCarr');
+    let imgCarr = document.createElement('img');
+    imgCarr.setAttribute('class', 'imgCarr');
+    let nameCarr = document.createElement('h3');
+    nameCarr.setAttribute('class', 'nameCarr');
+    let valCarr = document.createElement('span');
+    valCarr.setAttribute('class', 'valCarr');
+    let btnRemove = document.createElement('button');
+    btnRemove.setAttribute('class', 'btnRemove');
+
+    liCarr.id = 'ci_' + dataCards.id;
+    imgCarr.src = dataCards.img;
+    nameCarr.innerText = dataCards.nameItem;
+    valCarr.innerText = 'R$ ' + dataCards.value + '.00';
+    btnRemove.innerText = 'Remover produto';
+    btnRemove.id = 'i_' + dataCards.id;
+
+    liCarr.appendChild(imgCarr);
+    liCarr.appendChild(nameCarr);
+    liCarr.appendChild(valCarr);
+    liCarr.appendChild(btnRemove);
+
+    btnRemove.addEventListener('click', function(e){
+        liCarr.remove();
+        quantidade--;
+        somaPreco -= dataCards.value;
+
+        document.querySelector('.valorQuant').innerHTML = quantidade;
+
+        document.querySelector('.spanRes').innerHTML = 'R$ ' + somaPreco + '.00';
+
+       
+
+    });
+
+    return liCarr;
+
+ }
+
+
+
 
 let aside = document.createElement('aside');
 main.appendChild(aside);
@@ -79,14 +153,139 @@ textDoCarr.setAttribute('class','textDoCarr');
 textDoCarr.innerText = 'Carrinho de compras';
 let itemCarr = document.createElement('div');
 itemCarr.setAttribute('class','itemCarr');
-itemCarr.innerText = 'Carrinho vázio';
 secCarr.appendChild(textDoCarr);
 secCarr.appendChild(itemCarr);
 
 let infoItemCarr = document.createElement('span');
 infoItemCarr.setAttribute('class','infoItemCarr');
-infoItemCarr.innerText = 'Adicione itens';
+infoItemCarr.innerText = 'Carrinho vázio';
 itemCarr.appendChild(infoItemCarr);
+
+let ulItemCarr = document.createElement('ul');
+ulItemCarr.setAttribute('class', 'ulItem');
+itemCarr.appendChild(ulItemCarr);
+
+
+let secCal = document.createElement('section');
+secCal.setAttribute('class', 'secCal');
+
+let divQ = document.createElement('div');
+divQ.setAttribute('class','divQ');
+secCal.appendChild(divQ);
+
+let quant = document.createElement('span');
+quant.setAttribute('class', 'quant');
+quant.innerText = 'Quantidade: ';
+divQ.appendChild(quant);
+
+let qntTot = document.createElement('span');
+qntTot.setAttribute('class', 'valorQuant'); ;
+divQ.appendChild(qntTot);
+
+
+
+let divVal = document.createElement('div');
+divVal.setAttribute('class', 'divVal');
+secCal.appendChild(divVal);
+
+let spanTot = document.createElement('span');
+spanTot.innerText = 'Total: ';
+divVal.appendChild(spanTot);
+
+let spanRes = document.createElement('span');
+spanRes.setAttribute('class', 'spanRes');
+divVal.appendChild(spanRes);
+
+aside.appendChild(secCal);
+
+
+// Configurando a parte do logo e menus (bonus) //
+
+let todos = document.querySelector('#todos');
+let acessorios = document.querySelector('#aces');
+let calcados = document.querySelector('#calcados');
+let camisetas = document.querySelector('#camisetas');
+
+todos.addEventListener('click', function(e){
+    ul.innerHTML = '';
+    Cards(data);
+
+
+});
+
+acessorios.addEventListener('click', function(e){
+    let acess = [];
+    ul.innerHTML = '';
+
+    for(let i = 0; i < data.length; i++){
+        if(data[i].tag == "Acessórios"){
+            acess.push(data[i]);
+            
+            
+           
+        }
+
+        
+
+    }
+
+    Cards(acess);
+   
+
+});
+
+calcados.addEventListener('click', function(e){
+    let jaq = [];
+    ul.innerHTML = '';
+
+    for(let i = 0; i < data.length; i++){
+        if(data[i].tag == "Jaquetas"){
+            jaq.push(data[i]);
+           
+           
+        }
+
+    }
+
+    Cards(jaq);
+
+});
+
+camisetas.addEventListener('click', function(e){
+    let camis = [];
+
+    for(let i = 0; i < data.length; i++){
+        if(data[i].tag == "Camisetas"){
+            console.log(data[i]);
+            camis.push(data[i]);
+           
+        }
+
+    }
+
+
+});
+
+/*btnPes.addEventListener('click', function(e){
+    let inp = [];
+    
+    for(let i = 0; i < data.length; i++){
+        if(barraInp.includes == 'Shirt' || 'shirt' || 'Camisa' || 'camisas' || 'Camisas' || 'camisa'){
+            inp.push(data[i]);
+
+
+        }
+    }
+
+});
+*/
+
+
+
+
+
+
+
 
 
 
