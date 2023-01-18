@@ -62,8 +62,6 @@ function Cards(data){
                 
                 infoItemCarr.style = 'display: none';
 
-            }else if(quantidade == 0){
-                infoItemCarr.style = 'display: flex';
             }
 
 
@@ -77,7 +75,6 @@ function Cards(data){
             spanRes.innerText = 'R$ ' + somaPreco + '.00';
             
         });
-
 
     }
 
@@ -114,11 +111,13 @@ Cards(data);
         quantidade--;
         somaPreco -= dataCards.value;
 
+        if(quantidade == 0){
+            infoItemCarr.style = 'display: flex';
+        }
+
         document.querySelector('.valorQuant').innerHTML = quantidade;
 
         document.querySelector('.spanRes').innerHTML = 'R$ ' + somaPreco + '.00';
-
-       
 
     });
 
@@ -127,6 +126,7 @@ Cards(data);
  }
 
 
+ // Parte da criação do aside, com os elementos da barra de pesquisa e carrinho de compras //
 
 
 let aside = document.createElement('aside');
@@ -198,6 +198,11 @@ divVal.appendChild(spanRes);
 
 aside.appendChild(secCal);
 
+let btnFinalizarComp = document.createElement('button');
+btnFinalizarComp.innerText = 'Finalizar Compra';
+btnFinalizarComp.setAttribute('class', 'btnFinalizarComp');
+aside.appendChild(btnFinalizarComp);
+
 
 // Configurando a parte do logo e menus (bonus) //
 
@@ -221,16 +226,11 @@ acessorios.addEventListener('click', function(e){
         if(data[i].tag == "Acessórios"){
             acess.push(data[i]);
             
-            
-           
         }
-
-        
 
     }
 
     Cards(acess);
-   
 
 });
 
@@ -241,7 +241,6 @@ calcados.addEventListener('click', function(e){
     for(let i = 0; i < data.length; i++){
         if(data[i].tag == "Jaquetas"){
             jaq.push(data[i]);
-           
            
         }
 
@@ -259,37 +258,29 @@ camisetas.addEventListener('click', function(e){
         if(data[i].tag == "Camisetas"){
             camis.push(data[i]);
             
-           
         }
 
     }
 
     Cards(camis);
 
-
 });
 
-/*btnPes.addEventListener('click', function(e){
+// Configurando a barra de pesquisa //
+
+btnPes.addEventListener('click', function(e){
     let inp = [];
+    ul.innerHTML = '';
     
     for(let i = 0; i < data.length; i++){
-        if(barraInp.includes == 'Shirt' || 'shirt' || 'Camisa' || 'camisas' || 'Camisas' || 'camisa'){
-            inp.push(data[i]);
+        //if(barraInp.value == data[i].nameItem){
+            if(data[i].nameItem.toLowerCase().includes(barraInp.value)){
+                inp.push(data[i]);
 
-
-        }
+            }
+           
     }
 
+    Cards(inp);
+
 });
-*/
-
-
-
-
-
-
-
-
-
-
-

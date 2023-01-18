@@ -31,6 +31,7 @@ header{
 .estTds{
     background-color: white;
     border: 0px;
+    cursor: pointer;
 }
 
 
@@ -41,6 +42,8 @@ header{
 
 hr{
     opacity: 0.3;
+    box-shadow: 10px 2px 10px #828282;
+    
 
 }
 
@@ -72,6 +75,14 @@ li{
     border: 2px solid;
     border-color:#828282;
     
+    
+    
+
+}
+
+li:hover{
+    border: 2px solid  #37268C;
+    box-shadow: 10px 2px 10px #828282;
 
 }
 
@@ -108,6 +119,7 @@ p{
     display: flex;
     border: 0px;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 .adcProduto:hover{
@@ -119,6 +131,10 @@ p{
 
 img{
     background-color: #828282;
+}
+
+img:hover{
+    background-color: #37268C;
 }
 
 aside{
@@ -145,6 +161,7 @@ input{
     border: 0px;
     color: #F5F5F5;
     background-color: #2E245E;
+    cursor: pointer;
 }
 
 .btnPes:hover{
@@ -199,11 +216,19 @@ input{
     border-color: #F5F5F5;
 }
 
+.liCarr:hover{
+    border-color:#F5F5F5;
+}
+
 .imgCarr{
     height: 45px;
     width: 74.181px;
     margin: auto;
 
+}
+
+.imgCarr:hover{
+    background-color: #828282;
 }
 
 .nameCarr{
@@ -220,6 +245,7 @@ input{
 
 .btnRemove{
     font-size: 9px;
+    cursor: pointer;
 }
 
 .btnRemove:hover{
@@ -253,8 +279,17 @@ input{
     margin-right: 5px;
 }
 
+.btnFinalizarComp{
+    margin-top: 10px;
+    height: 50px;
+    width: 247.27px; 
+    border: 0px;
+    color: #F5F5F5;
+    background-color: #2E245E;
+    cursor: pointer;
+}
 
-
-
-
+.btnFinalizarComp:hover{
+    background-color: #37268C;
+}
 
