@@ -284,3 +284,4 @@ btnPes.addEventListener('click', function(e){
     Cards(inp);
 
 });
+

@@ -81,8 +81,8 @@ li{
 }
 
 li:hover{
-    border: 2px solid  #37268C;
-    box-shadow: 10px 2px 10px #828282;
+    border: 2px solid  #2E245E;
+    box-shadow: 10px 2px 10px #2E245E;
 
 }
 
@@ -131,10 +131,6 @@ p{
 
 img{
     background-color: #828282;
-}
-
-img:hover{
-    background-color: #37268C;
 }
 
 aside{
@@ -287,6 +283,7 @@ input{
     color: #F5F5F5;
     background-color: #2E245E;
     cursor: pointer;
+    font-size: 17px;
 }
 
 .btnFinalizarComp:hover{
