@@ -110,6 +110,7 @@ p{
 
 .valor{
     color: #2E245E;
+    font-weight: bolder;
     margin-bottom: 5px;
     margin-left: 5px;
     
@@ -117,6 +118,7 @@ p{
 
 .adcProduto{
     display: flex;
+    font-size: 13px;
     border: 0px;
     margin-top: 5px;
     cursor: pointer;
