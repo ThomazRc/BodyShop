@@ -253,15 +253,18 @@ calcados.addEventListener('click', function(e){
 
 camisetas.addEventListener('click', function(e){
     let camis = [];
+    ul.innerHTML = '';
 
     for(let i = 0; i < data.length; i++){
         if(data[i].tag == "Camisetas"){
-            console.log(data[i]);
             camis.push(data[i]);
+            
            
         }
 
     }
+
+    Cards(camis);
 
 
 });
