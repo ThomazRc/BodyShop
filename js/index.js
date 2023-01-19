@@ -44,7 +44,6 @@ function Cards(data){
         addCar.innerText = dataCards.addCart;
 
         
-
         li.appendChild(img);
         li.appendChild(tag);
         li.appendChild(name);
@@ -64,13 +63,11 @@ function Cards(data){
 
             }
 
-
             let cards = criarItemCarr(dataCards);
             let lista = document.querySelector('.ulItem');
             lista.appendChild(cards);
 
            
-
             qntTot.innerText = quantidade;
             spanRes.innerText = 'R$ ' + somaPreco + '.00';
             
@@ -183,7 +180,6 @@ qntTot.setAttribute('class', 'valorQuant'); ;
 divQ.appendChild(qntTot);
 
 
-
 let divVal = document.createElement('div');
 divVal.setAttribute('class', 'divVal');
 secCal.appendChild(divVal);
@@ -284,4 +280,3 @@ btnPes.addEventListener('click', function(e){
     Cards(inp);
 
 });
-
